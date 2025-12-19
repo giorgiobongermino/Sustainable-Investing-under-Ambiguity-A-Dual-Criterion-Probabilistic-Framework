@@ -7,6 +7,7 @@ Helper scripts to compare two portfolio-construction rules:
 All launchers read ESG scores and prices from `sp100.xlsx` (other index Excel files are available) and save grids of weights/metrics plus summary tables for out-of-sample evaluation.
 
 ## Key files
+- 'firm_level_summary_return_esg.csv' contains a table with the main summary statistics for companies' returns and ESG score
 - `codice_base.py` — core primitives: simplex optimizer, NUTS-based mean on the simplex (`mean_simplex_from_logp`), DPU combiner (`expectation_DPU`), and mean–variance/ESG objectives.
 - `dpu_worker*.py` — workers executed in separate processes. Base version uses mean–variance; `*_CVaR` variants use empirical mean–CVaR for the financial leg; `*_blocks` versions also build performance series, yearly ESG scores, and risk metrics; `*_5plus2` implements the 5-year in-sample + 2-year out-of-sample scheme.
 - `launcher_parallel_dpu*.py` — single-window grid search over `(m, λ_1, λ_2)`; writes `parallel_meu_dpu_results*.csv|parquet` and `weights_*.[npz|pkl]`.
